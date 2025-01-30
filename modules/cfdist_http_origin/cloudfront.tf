@@ -65,7 +65,7 @@ locals {
   bucket_logging = {
     bucket          = var.bucket
     include_cookies = var.include_cookies
-    prefix          = var.prefix
+    prefix          = var.bucket_prefix
 
   }
 }
