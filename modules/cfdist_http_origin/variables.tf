@@ -228,7 +228,7 @@ variable "path_pattern" {
 }
 
 variable "bucket_prefix" {
-  description = "Indicates whether CloudFront includes cookies in access logs."
+  description = "Logging bucket prefix"
   type        = string
   default     = ""
 }
