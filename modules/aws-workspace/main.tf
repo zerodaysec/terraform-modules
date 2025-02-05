@@ -16,11 +16,11 @@ resource "aws_subnet" "private-b" {
 
 resource "aws_directory_service_directory" "main" {
   name     = "corp.example.com"
-  password = "@D$ecret99!!"
+  password = var.directory_password
   size     = "Small"
   vpc_settings {
     vpc_id     = aws_vpc.main.id
-    subnet_ids = ["${aws_subnet.private-a.id}", "${aws_subnet.private-b.id}"]
+    subnet_ids = [aws_subnet.private-a.id, aws_subnet.private-b.id]
   }
 }
 
@@ -31,4 +31,10 @@ resource "aws_workspaces_directory" "main" {
     increase_volume_size = true
     rebuild_workspace    = true
   }
+}
+
+variable "directory_password" {
+  description = "The password for the directory service."
+  type        = string
+  sensitive   = true
 }
